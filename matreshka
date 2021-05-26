@@ -1,0 +1,35 @@
+#bash
+
+echo $1
+case "$1" in
+"start")
+	proc=$(ps aux | grep 'server.js' | grep -v grep)
+    if [ -z "$proc" ]
+    then
+      nohup node ./server.js >> /dev/null 2>&1 &
+      echo "Сервис запущен"
+	  tail -n 5 *.log
+	else
+	  echo "процесс уже запущен"
+	  echo $proc
+	fi
+;;
+"restart")
+    pkill -9 -f server.js
+    echo "Сервис остановлен"
+    nohup node ./server.js > /dev/null 2>&1 &
+    echo "Сервис запущен"
+    tail -n 5 *.log
+;;
+"stop")
+    pkill -9 -f server.js
+    echo "Сервис остановлен"
+;;
+"status")
+    echo "ищем процесс:"
+    echo $(ps aux | grep 'server.js' | grep -v grep)
+;;
+*)
+    echo "avaible command: start, stop, restart, status"
+;;
+esac

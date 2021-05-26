@@ -1,0 +1,20 @@
+{
+  "port": 9999,
+
+  "logSettings": {
+    "logFile": "matrena.log",
+    "debugMode": true
+  },
+  "configFolder": "configs",
+  "operatorRolePackFolder": "additionalFolder/roleLists",
+  "oracleSettings": {
+    "requestTemplateFolder": "additionalFolder/SQL/templates",
+    "schemeConfigsFile": "additionalFolder/SQL/oracleSchemes.json",
+    "fetchRowDefault": 10
+  },
+  "healthCheckTestCaseFolder": "additionalFolder/healthCheck",
+  "autoTestSettings": {
+    "folder": "/u01/home/relstand/bin/ReleaseStand_Management_StartServices/matreshka/additionalFolder/autotests",
+    "startCommand": "./run-tests.sh"
+  }
+}

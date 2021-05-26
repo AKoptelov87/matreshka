@@ -1,0 +1,16 @@
+{
+  "name": "cloneService",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "description": "Some test site",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "oracledb": "^3.0.0",
+    "request": "^2.88.0",
+    "ssh-exec": "^2.0.0",
+    "ejs": "^2.7.1"
+  }
+}
