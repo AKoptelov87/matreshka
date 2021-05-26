@@ -52,7 +52,7 @@ And, then install Nodejs using command:
 Меню 2х уровневое, разобраться не сложно (имя параметра -- название пункта, если параметр является объектом то будет разворачиваться):
 ```json
 { 
-    "grafana":"http://srv2-mon.ru:3000/dashboard/db/main_gf?refresh=10s&orgId=1",
+    "grafana":"http://srv2-mon.ru:3000/dashboard/db/main?refresh=10s&orgId=1",
     "servers applications":{ 
         "srv2-app01":"/serverApplicationsPage?server=srv2-app01"
     },
