@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang=ru>
+<head>
+    <meta charset=utf-8>
+    <title>Меню</title>
+    <link rel="stylesheet" type="text/css" href="/css/menu.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">  //скрипт для меню
+    $(function () {
+      $(".runAT").click(function () {
+
+        $(this).addClass("runningAT");
+
+        var suit = $(this).attr("suit");
+        $(this).addClass(suit);
+        $.get("/runAutoTests?suit="+suit, function (data) {
+          $("."+suit).removeClass("runningAT");
+        })
+
+      });
+
+      $(".mini-menu .submenu").click(function () {
+        var ul = $(this).next(),
+            clone = ul.clone().css({"height": "auto"}).appendTo(".mini-menu"),
+            height = ul.css("height") === "0px" ? ul[0].scrollHeight + "px" : "0px";
+        clone.remove();
+        ul.animate({"height": height});
+        return false;
+      });
+
+      $("a").click(function () {
+        if ($(this)[0].target === "CONTENT") {
+          $(".chosen").removeClass("chosen");//Удаляем класс у прошлого выделенного
+          $(this).addClass("chosen");//добовляем класс
+        }
+      });
+
+    });
+    </script>
+
+
+</head>
+<body>
+<div class="mini-menu">
+    <ul>
+        {{menuItem}}
+
+    </ul>
+</div>
+</body>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/snow.js"></script>
+</html>

@@ -1,0 +1,38 @@
+{
+  "Grafana": "http://srv2-mon.ru:3000/dashboard/db/main_gf",
+  "Chronograf": "http://srv2-mon.ru:8888/sources/1/chronograf/data-explorer",
+  "ReportPortal": "https://reportportal.ru/ui/#login",
+  "Mr. Octopus": "http://srv2-gf-mon:8899/",
+  "Applications control" : {
+    "srv2-mon": "/serverApplicationsPage?server=srv2-mon",
+    "srv2-app01": "/serverApplicationsPage?server=srv2-gf-app01"
+  },
+  "Tomcats": {
+    "app02: tomcat": "http://srv2-app02:18081/manager/html/",
+    "app02: tomcat_auto1": "http://srv2-app02:18082/manager/html/"
+  },
+  "ZMan (zookeeper)": "http://srv2-cd01:8888/#/GF",
+  "Nginx": {
+    "frontend": "http://srv2-app01:9888/status",
+    "backend": "http://srv2-app01:8889/status"
+  },
+  "EMON": {
+    "Grafana: admin/admin": "http://srv2-emon.ru:3001",
+    "Chronograf": "http://srv2-emon.ru:8085"
+  },
+  "Karaf ESB": {
+    "karaf": "http://srv2-app01:8040/system/console",
+    "CLI": "http://srv2-app01:8040/system/console/gogo"
+  },
+  "RabbitMQ": {
+    "MQ: srv2-cd01": "http://srv2-cd01:15666"
+  },
+  "test features": {
+    "Operator Roles": "/html/operatorRoles.html",
+    "SQL_SelectorNew": "/html/SQLpluginNew.html",
+    "Sims Generator": "/html/simsGenerator.html",
+    "Health Check": "/html/restClient?case_name=apiTestCase"
+  }
+}
+
+

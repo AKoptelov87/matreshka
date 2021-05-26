@@ -1,0 +1,14 @@
+[
+  {
+    "role_name": "OAPI:v2:LinkedParty:Add:Full"
+  },
+  {
+    "role_name": "OAPI:v2:LinkedParty:Get:Full"
+  },
+  {
+    "role_name": "OAPIUser:AccessGet"
+  },
+  {
+    "role_name": "OAPIUser:BaseDataGet"
+  }
+]

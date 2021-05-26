@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Language" content="ru">
+    <title>SIM-card Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/simsGenerator.css">
+</head>
+
+<body>
+<div class="container">
+    <form id="simsForm">
+        <div class="form-group">
+            <input id="simPrefix" type="text" min="1" placeholder="Префикс сим" pattern="[0-9]{3}" maxlength="3"
+                   required
+                   class="form-control" aria-describedby="helpPrefix">
+            <small id="helpPrefix" class="form-text text-muted">Лучше указывать 250, три символа</small>
+        </div>
+        <div class="form-group">
+            <input id="simNumber" type="text" class="form-control" placeholder="Номер сим" pattern="[0-9]{8}"
+                   maxlength="8" min="1" required aria-describedby="helpNumber">
+            <small id="helpNumber" class="form-text text-muted">8 символов</small>
+        </div>
+        <div class="form-group">
+            <input id="simCount" class="form-control" placeholder="Количество" type="number" min="1" max="1000" step="1"
+                   required aria-describedby="helpCount">
+            <small id="helpCount" class="form-text text-muted">От 1 до 1000</small>
+        </div>
+        <button type="reset" class="btn btn-outline-info">Очистить</button>
+        <div class="float-right">
+            <button id="saveSims" type="submit" class="btn btn-success">Сохранить в файл</button>
+        </div>
+    </form>
+</div>
+
+</body>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/simsGenerator.js"></script>
+</html>

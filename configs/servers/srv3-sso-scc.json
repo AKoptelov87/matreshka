@@ -1,0 +1,180 @@
+{
+  "ssh": {
+    "host": "srv3-sso-scc",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+"/u01/home/relstand/logs/sso"
+  ],
+  "applications": {
+    "SSO_BASH_SCRIPTS": {
+      "path": "/u01/home/relstand/bin",
+      "checkStatusCommand": "ls -l /u01/home/relstand/bin | grep sso_restart.sh | grep -v grep",
+      "command": {
+        "start": "./sso_start.sh",
+        "stop": "./sso_stop.sh",
+        "restart": "./sso_restart.sh",
+        "pingpong": "./sso_pingpong.sh"
+      }
+    },
+    "oapi_sso_backend": {
+      "path": "/u01/home/relstand/bin/sso/oapi_sso_backend",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/oapi_sso_backend/bin/oapi_sso_backend ping | grep pong | grep -v grep",
+      "command": {
+        "start": "./bin/oapi_sso_backend start",
+        "stop": "./bin/oapi_sso_backend stop",
+        "restart": "./bin/oapi_sso_backend restart",
+        "getpid": "./bin/oapi_sso_backend getpid"
+      }
+    },
+    "sso_auth_srv": {
+      "path": "/u01/home/relstand/bin/sso/auth_srv",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/auth_srv/bin/auth_srv ping|grep pong|grep -v grep",
+      "command": {
+        "start": "./bin/auth_srv start",
+        "stop": "./bin/auth_srv stop",
+        "restart": "./bin/auth_srv restart"
+      }
+    },
+    "sso_acc_srv": {
+      "path": "/u01/home/relstand/bin/sso/acc_srv",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/acc_srv/bin/acc_srv ping|grep pong|grep -v grep",
+      "command": {
+        "start": "./bin/acc_srv start",
+        "stop": "./bin/acc_srv stop",
+        "restart": "./bin/acc_srv restart",
+        "getpid": "./bin/acc_srv getpid"
+      }
+    },
+    "sso_pdp_srv": {
+      "path": "/u01/home/relstand/bin/sso/pdp_srv",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/pdp_srv/bin/pdp_srv ping | grep pong | grep -v grep",
+      "command": {
+        "start": "./bin/pdp_srv start",
+        "stop": "./bin/pdp_srv stop",
+        "restart": "./bin/pdp_srv restart",
+        "getpid": "./bin/pdp_srv getpid"
+      }
+    },
+    "sso_auth_adm_int": {
+      "path": "/u01/home/relstand/bin/sso/auth_adm_int",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/auth_adm_int/bin/auth_adm_int ping|grep pong|grep -v grep",
+      "command": {
+        "start": "./bin/auth_adm_int start",
+        "stop": "./bin/auth_adm_int stop",
+        "restart": "./bin/auth_adm_int restart"
+      }
+    },
+    "sso_nginx": {
+      "path": "/u01/home/relstand/bin/sso/nginx",
+      "checkStatusCommand": "ps aux | grep sso/nginx | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop",
+        "restart": "./nginxctl restart"
+      }
+    },
+    "sso_sep_srv": {
+      "path": "/u01/home/relstand/bin/sso/sep_srv",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/sep_srv/bin/sep_srv ping|grep pong|grep -v grep",
+      "command": {
+        "start": "./bin/sep_srv start",
+        "stop": "./bin/sep_srv stop",
+        "restart": "./bin/sep_srv restart"
+      }
+    },
+    "directory": {
+      "path": "/u01/home/relstand/bin/sso/directory",
+      "checkStatusCommand": "ps aux | grep directory | grep -v grep",
+      "command": {
+        "start": "./directoryctl start",
+        "stop": "./directoryctl stop",
+        "restart": "./directoryctl restart",
+        "status": "./directoryctl status"
+      }
+    },
+    "sso_user_batch_srv": {
+      "path": "/u01/home/relstand/bin/sso/sso_user_batch_srv",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/sso_user_batch_srv/bin/sso_user_batch_srv ping|grep pong|grep -v grep",
+      "command": {
+        "start": "./bin/sso_user_batch_srv start",
+        "stop": "./bin/sso_user_batch_srv redis stop",
+        "restart": "./bin/sso_user_batch_srv restart"
+      }
+    },
+    "sso_redis_authdata_old": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-server | grep *:11379 | grep -v grep",
+      "command": {
+        "start": "./redisctl redis start authdata_old",
+        "stop": "./redisctl redis stop authdata_old",
+        "status": "./redisctl redis status authdata_old"
+      }
+    },
+    "sso_redis_authdata": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-server | grep *:6379 | grep -v grep",
+      "command": {
+        "start": "./redisctl redis start authdata",
+        "stop": "./redisctl redis stop authdata",
+        "status": "./redisctl redis status authdata"
+      }
+    },
+    "sso_redis_dictionary": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-server | grep *:7379 | grep -v grep",
+      "command": {
+        "start": "./redisctl redis start dictionary",
+        "stop": "./redisctl redis stop dictionary",
+        "status": "./redisctl redis status dictionary"
+      }
+    },
+    "sso_redis_noeviction": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-server | grep *:8379 | grep -v grep",
+      "command": {
+        "start": "./redisctl redis start noeviction",
+        "stop": "./redisctl redis stop noeviction",
+        "status": "./redisctl redis status noeviction"
+      }
+    },
+    "sso_redis_system": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-server | grep *:9379 | grep -v grep",
+      "command": {
+        "start": "./redisctl redis start system",
+        "stop": "./redisctl redis stop system",
+        "status": "./redisctl redis status system"
+      }
+    },
+    "sso_redis_ttl": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-server | grep *:10379 | grep -v grep",
+      "command": {
+        "start": "./redisctl redis start ttl",
+        "stop": "./redisctl redis stop ttl",
+        "status": "./redisctl redis status ttl"
+      }
+    },
+    "sso_redis_sentinel": {
+      "path": "/u01/home/relstand/bin/sso/redis",
+      "checkStatusCommand": "ps -ef|grep redis-sentinel | grep -v grep",
+      "command": {
+        "start": "./redisctl sentinel start",
+        "stop": "./redisctl sentinel stop",
+        "status": "./redisctl sentinel status"
+      }
+    },
+	"sso_cache_manager_nginx": {
+      "path": "/u01/home/relstand/bin/sso/cache_manager_nginx",
+      "checkStatusCommand": "ps aux | grep sso/cache_manager_nginx | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop",
+        "restart": "./nginxctl restart"
+      }
+    }
+
+  }
+}

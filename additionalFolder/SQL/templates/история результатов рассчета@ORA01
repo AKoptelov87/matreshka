@@ -1,0 +1,5 @@
+{
+  "sqlQuery": "select * from RESULTS_HIST",
+  "dbName": "ORS01",
+  "rowCount": "10"
+}

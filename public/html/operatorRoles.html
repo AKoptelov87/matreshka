@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Manage operator roles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="../css/operatorRoles.css" />
+  <script src="../js/jquery-3.3.1.min.js"></script>
+  <script src="../js/operatorRoles.js"></script>
+</head>
+<body>
+  <div class="main">
+    <div class="row">
+        <div class="main-form box">
+          <img id="wait" src="../img/wait.gif">
+          <div class="main-form__operator-name">
+            <input id = "userName" type="text" placeholder="Имя оператора*" style="width: 100%;">&nbsp;
+            <button id="getRole" type="button" class="btn-green" title="Имя оператора обязательно" >Get role list</button>&nbsp;
+            <button id="checkRole" type="button" class="btn-green" title='Имя оператора обязательно'>Check roles</button>
+            <button id="grantRole" type="button" class="btn-red" title='Имя оператора обязательно'>Grant roles</button>&nbsp;
+          </div>
+          <br>
+          <textarea class="main-form__textarea" placeholder="Список ролей без кавычек через ';' или ',' допускаются переносы строк &#10;Либо в формате результата (json)"></textarea>
+          <br>
+          <div class="main-form__save">
+          <input id = "fileName" type="text" placeholder="Имя шаблона" style="width: 120px;">&nbsp;
+          <button id="saveFile" type="button" class="btn-green">Save</button>
+          </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="savedPacks">
+        Saved role packs
+        <div class="box">
+          <ul class="pack-list">
+            <li class="pack-list__item">example <img class="pack-list__remove" src="../img/remove.png"> </li>
+            <li class="pack-list__item">example_1 <img class="pack-list__remove" src="../img/remove.png"> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

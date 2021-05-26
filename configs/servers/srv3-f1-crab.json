@@ -1,0 +1,70 @@
+{
+  "ssh": {
+    "host": "srv3-f1-crab",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+    "/u01/home/relstand/logs"
+  ],
+  "applications": {
+    "tomcat_crab": {
+      "path": "/u01/home/relstand/tomcat_crab/current",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep tomcat_crab |  grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-f1-crab:8080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+    },
+    "CRAB_ACTIVATOR": {
+      "path": "/u01/home/relstand/node/libs",
+      "checkStatusCommand": "ps aux | grep node/activator | grep -v grep",
+      "command": {
+	"start": "supervisorctl start activator",
+        "stop": "supervisorctl stop activator",
+        "restart": "supervisorctl restart activator",
+        "status": "supervisorctl status activator"
+      }
+    },
+    "CRAB_CONSUMER": {
+      "path": "/u01/home/relstand/node/libs",
+      "checkStatusCommand": "ps aux | node/consumer | grep -v grep",
+      "command": {
+        "start": "supervisorctl start consumer",
+        "stop": "supervisorctl stop consumer",
+        "restart": "supervisorctl restart consumer",
+        "status": "supervisorctl status consumer"
+      }
+    },
+    "CRAB_DISPATCHER": {
+      "path": "/u01/home/relstand/node/libs",
+      "checkStatusCommand": "ps aux | grep node/dispatcher | grep -v grep",
+      "command": {
+        "start": "supervisorctl start dispatcher",
+        "stop": "supervisorctl stop dispatcher",
+        "restart": "supervisorctl restart dispatcher",
+	"status": "supervisorctl status dispatcher"
+      }
+    },
+    "CRAB_WORKER": {
+      "path": "/u01/home/relstand/node/libs",
+      "checkStatusCommand": "ps aux | grep node/worker | grep -v grep",
+      "command": {
+        "start": "supervisorctl start worker",
+        "stop": "supervisorctl stop worker",
+        "restart": "supervisorctl restart worker",
+        "status": "supervisorctl status worker"
+      }
+    },
+    "APACHE": {
+      "path": "/u01/home/relstand/apache_crab/current",
+      "checkStatusCommand": "ps aux | grep httpd | grep apache_crab | grep -v grep",
+      "command": {
+        "start": "./bin/apachectl start",
+        "stop": "./bin/apachectl stop"
+      }
+    }
+  }
+}

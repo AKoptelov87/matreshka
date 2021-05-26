@@ -1,0 +1,186 @@
+/*** BLOCKS AND FORMS ***/
+.main:after, .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.box {
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    padding: 25px;
+    box-sizing: border-box;
+    margin: 10px;
+    overflow: auto;
+}
+
+.main-form {
+    width: 70%;
+    float: left;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+.quickLoad-form {
+    width: 25%;
+    float: right;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+/*** BUTTONS AND INPUTS ***/
+input, textarea {
+    padding: 8px;
+}
+
+button {
+    display: inline-block;
+    background-color: #fff;
+    color: #292929;
+    border: 1px solid #292929;
+    padding: 12px;
+}
+
+.btn-green:hover {
+    background-color: #0e5a04;
+    color: #fff;
+    border: 1px solid #0e5a04;
+}
+
+.btn-red:hover {
+    background-color: #631103;
+    color: #fff;
+    border: 1px solid #631103;
+}
+
+.settings {
+    width: 15px;
+    height: 15px;
+}
+
+/*** EDIT QUERY FORM ***/
+
+.file {
+    float: right;
+}
+
+#wait {
+    position: absolute;
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: none;
+}
+
+.main-form__textarea {
+    height: 335px;
+}
+
+.rowCount {
+    float: right;
+}
+
+
+
+
+
+/*** MODAL DIALOG ***/
+.load-dialog {
+    z-index: 100;
+    width: 600px;
+    height: 400px;
+    display: none;
+    margin: 0% 0 0 -30%;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    background: #d4d4d4;
+    overflow-y: scroll;
+}
+
+.schema-dialog {
+    z-index: 100;
+    width: 800px;
+    height: 700px;
+    display: none;
+    margin: 0% 0 0 -30%;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    background: #d4d4d4;
+}
+
+.saveScheme {
+    margin-top: 10px;
+    float: right;
+}
+
+
+.head-dialog {
+    color: #555;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+
+}
+
+.btn-close {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+
+.template-list {
+    list-style: none;
+    padding: 0px;
+}
+
+.template-list__item {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #b8b6b6;
+    border-bottom: 0px;
+}
+
+.template-list__item:hover {
+    background-color: #cad6fa;
+}
+
+.template-list__item:last-child {
+    border-bottom: 1px solid #b8b6b6;
+}
+
+.template-list__remove {
+    width: 20px;
+    height: 20px;
+    float: right;
+    display: none;
+}
+
+.template-list__item:hover > .template-list__remove { display: block; }
+
+/*** RESULT TABLE ***/
+th, td, p, input {
+    font:14px Verdana;
+}
+table, th, td
+{
+    width: 100%;
+    border: solid 1px #DDD;
+    border-collapse: collapse;
+    padding: 2px 3px;
+    text-align: center;
+}
+th {
+    font-weight:bold;
+}
+
+#outputJSON {
+    display: none;
+}

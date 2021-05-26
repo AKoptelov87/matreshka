@@ -1,0 +1,5 @@
+{
+  "sqlQuery": "select count(*) from sys_logs <br> -- truncate table sys_logs",
+  "dbName": "ORA01",
+  "rowCount": "10"
+}

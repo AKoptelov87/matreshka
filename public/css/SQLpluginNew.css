@@ -1,0 +1,57 @@
+#editor {
+    height: 300px;
+}
+
+.container, .container-fluid {
+    margin-top: 20px;
+}
+
+#settings {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+#currentSchemeTemplatesList {
+    cursor: pointer;
+}
+
+#resultDiv {
+    height: 500px;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover>#remove_icon {
+    display: block;
+}
+
+#remove_icon {
+    width: 20px;
+    height: 20px;
+    float: right;
+    display: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#editSchemesList {
+    height: 300px;
+    overflow: auto;
+}
+
+#templateList {
+    height: 500px;
+    overflow: auto;
+}
+
+#outputJSONBlock {
+    display: none;
+    margin-top: 10px;
+}
+
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}

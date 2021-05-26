@@ -1,0 +1,12 @@
+{
+  "ORA01": {
+    "user": "user",
+    "password": "pass",
+    "connectString": "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=server-ora01.ru)(PORT=1111)))(CONNECT_DATA=(SID=sid1)(SERVER=DEDICATED)))"
+  },
+  "ORA02": {
+    "user": "user",
+    "password": "pass",
+    "connectString": "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=server-ora02.ru)(PORT=1111)))(CONNECT_DATA=(SID=sid2)(SERVER=DEDICATED)))"
+  }
+}

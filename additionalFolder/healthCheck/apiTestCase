@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "user pass policies",
+    "requestType": "GET",
+    "URL": "http://srv-oapi.ru:8888/OAPI/v1/users/current?login=USER",
+    "body": "",
+    "needToken": true,
+    "responseCode": "200"
+  },
+  {
+    "id": "2",
+    "name": "test POST",
+    "requestType": "POST",
+    "URL": "https://postman-echo.com/post",
+    "body": "{\r\n\t\"test\": 1\r\n}",
+    "needToken": true,
+    "responseCode": "200"
+  }
+]

@@ -1,0 +1,94 @@
+{
+  "ssh": {
+    "host": "srv3-amain-a",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+    "/u01/home/relstand/bin/r60base"
+  ],
+  "applications": {
+    "ZOOKEEPER": {
+      "path": "/u01/home/relstand/bin/r60base/ZOOKEEPER_openapi_2.0",
+      "checkStatusCommand": "ps aux | grep java | grep ZOOKEEPER_openapi_2.0 | grep -v grep",
+      "command": {
+        "start": "./bin/zkServer.sh start",
+        "stop": "./bin/zkServer.sh stop",
+        "restart": "./bin/zkServer.sh restart",
+        "status": "./bin/zkServer.sh status"
+      }
+    },
+    "KARAF": {
+      "path": "/u01/home/relstand/bin/r60base/KARAF_openapi_2.0/container",
+      "checkStatusCommand": "ps aux | grep java | grep KARAF_openapi_2.0 | grep org.apache.karaf.main.Main | grep -v grep",
+      "command": {
+        "start": "./bin/start",
+        "stop": "./bin/stop",
+        "bundle list": "./bin/client list | sort -rk 2"
+      }
+},
+    "NGINX": {
+      "path": "/u01/home/relstand/bin/r60base/nginx",
+      "checkStatusCommand": "ps aux | grep /u01/home/relstand/bin/r60base/nginx | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop",
+        "restart": "./nginxctl restart"
+      }
+},
+    "HAS_UNIPAY": {
+      "path": "/u01/home/relstand/bin/r60base/has_server_unipay",
+      "checkStatusCommand": "ps aux | grep has_serverd_unipay | grep -v grep",
+      "command": {
+        "start": "./has_serverctl start",
+        "stop": "./has_serverctl stop"
+      }
+ },
+    "HAS_UNIPAY_SBRF": {
+      "path": "/u01/home/relstand/bin/r60base/has_server_unipay_sbrf",
+      "checkStatusCommand": "ps aux | grep has_serverd_sbrf | grep -v grep",
+      "command": {
+        "start": "./has_serverctl start",
+        "stop": "./has_serverctl stop"
+      }
+ },
+    "has_sbms": {
+      "path": "/u01/home/relstand/bin/r60base/has_server_sbms",
+      "checkStatusCommand": "ps aux | grep has_serverd_sbms | grep -v grep",
+      "command": {
+        "start": "./has_serverctl start",
+        "stop": "./has_serverctl stop"
+      }
+ },
+    "tomcat_lis": {
+      "path": "/u01/home/relstand/bin/r60base/tomcat_lis",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep tomcat_lis | grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-amain-a:28080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+  },
+    "tomcat_openapi": {
+      "path": "/u01/home/relstand/bin/r60base/tomcat_openapi",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep tomcat_openapi | grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-amain-a:18080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+  },
+    "tomcat_ui": {
+      "path": "/u01/home/relstand/bin/r60base/tomcat_ui",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep tomcat_ui | grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-amain-a:38080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+    }
+  }
+}

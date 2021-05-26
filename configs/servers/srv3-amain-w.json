@@ -1,0 +1,47 @@
+{
+  "ssh": {
+    "host": "srv3-amain-w",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+    "/u01/home/relstand/bin/r60base/logs"
+  ],
+  "applications": {
+    "apache_tomcat": {
+      "path": "/u01/home/relstand/bin/r60base/apache-tomcat",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep apache-tomcat | grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-amain-w:8080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+    },
+    "tomcat_dcs": {
+      "path": "/u01/home/relstand/bin/r60base/tomcat_dcs",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep tomcat_dcs | grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-amain-w:9980/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+    },
+    "apache_sbms": {
+      "path": "/u01/home/relstand/bin/r60base/apache_sbms",
+      "checkStatusCommand": "ps aux | grep http | grep /u01/home/relstand/bin/r60base/apache_sbms | grep -v grep",
+      "command": {
+        "start": "./bin/apachectl start",
+        "stop": "./bin/apachectl stop"
+      }
+    },
+    "BRT": {
+      "path": "/u01/home/relstand/bin/r60base/BRT",
+      "checkStatusCommand": "ps aux | grep BRTSrv | grep -v grep",
+      "command": {
+        "start": "./rund.sh"
+      }
+    }
+  }
+}

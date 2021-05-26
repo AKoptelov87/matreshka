@@ -1,0 +1,147 @@
+/*** COMMON ***/
+
+body, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fcfcfc;
+}
+
+.main {
+  width: 90%;
+  box-sizing: border-box;
+  margin: 20px auto 20px auto;
+}
+
+.box {
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+/*** BUTTONS AND INPUTS ***/
+
+input, textarea {
+  padding: 10px;
+}
+
+button {
+  display: inline-block;
+  background-color: #fff;
+  color: #292929;
+  border: 1px solid #292929;
+  padding: 15px;
+}
+
+button:hover {
+  background-color: #292929;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.sm-btn, .sm-input {
+  padding: 5px;
+}
+
+.sm-btn:hover {
+  padding: 5px;
+}
+
+.btn-green:hover {
+  background-color: #0e5a04;
+  color: #fff;
+  border: 1px solid #0e5a04;
+}
+
+.btn-red:hover {
+  background-color: #631103;
+  color: #fff;
+  border: 1px solid #631103;
+}
+
+/*** GRID ***/
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.main-form {
+  width: 100%;
+}
+
+.savedPacks {
+  width: 100%;
+}
+
+/*** EDIT ROLE LIST FORM ***/
+
+.main-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-form__textarea {
+  min-height: 500px;
+  max-height: 500px;
+  resize: none;
+}
+
+.main-form__operator-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-form__save {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+/*** PACK LIST ***/
+
+.pack-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.pack-list__item {
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #b8b6b6;
+  border-bottom: 0px;
+}
+
+.pack-list__item:hover {
+  background-color: #fad401;
+}
+
+.pack-list__item:last-child {
+  border-bottom: 1px solid #b8b6b6;
+}
+
+.pack-list__remove {
+  width: 20px;
+  height: 20px;
+  float: right;
+  display: none;
+}
+.pack-list__item:hover > .pack-list__remove { display: block; }
+
+#wait {
+  position: absolute;
+  z-index: 1;
+  margin-top: 20px;
+  margin-left: 20px;
+  display: none;
+}

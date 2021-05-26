@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>SQL runner</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/SQLplugin.css"/>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/SQLplugin.js"></script>
+    <script src="../js/ace/ace.js"></script>
+    <script src="../js/ace/snippets/sql.js"></script>
+    <script src="../js/ace/ext-language_tools.js"></script>
+    <script src="../js/ace/ext-beautify.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="row">
+        <div class="main-form box">
+            <div class="main-form__header">
+                <img class="settings" id="editSchemas" src="../img/settings.png" alt="edit schemas"
+                     onclick="$('#schemaSettings').toggle();">
+                <label for="schemas">Schema Name: </label>
+                <select id="schemas">
+                    <option>example</option>
+                </select>
+                <div class="file">
+                    <input id="templateName" class="template-name" type="text" placeholder="Template name...">&nbsp;
+                    <button id="saveTemplate" type="button" class="btn-green">Save</button>&nbsp;
+                    <button id="openLoadForm" onclick="$('#load-dialog').toggle();" class="btn-green">Load</button>&nbsp;
+                </div>
+            </div>
+            <br><br>
+            <img id="wait" src="../img/wait.gif" alt="wait">
+            <div id="inputSQL" class="main-form__textarea"></div>
+            <script type="application/javascript">
+                editor = ace.edit('inputSQL');
+                editor.session.setMode("ace/mode/sql");
+                editor.setOptions({
+                    enableBasicAutocompletion: true,
+                    enableSnippets: true,
+                    enableLiveAutocompletion: true
+                });
+            </script>
+            <br>
+            <div class="main-form__footer">
+                <button id="execute" type="button" class="btn-red">Execute</button>
+                <div class="rowCount">
+                    <label for="rowCount">Row count: </label><input id="rowCount" type="text" value="10" style="width: 30px">
+                </div>
+            </div>
+        </div>
+        <div class="quickLoad-form box">
+            Saved quere for this schema:
+            <br>
+            <ul id="currentSchemeTemplatesList" class="template-list">
+<!--                <li class="template-list__item">example1</li>-->
+<!--                <li class="template-list__item">example2</li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+        <div class="result-form box">
+            Result of SQL request:
+            <table id="resultTable"></table>
+            <button onclick="$('#outputJSON').toggle();" style="float: right;">show JSON</button>
+            <br>
+            <textarea id="outputJSON" placeholder="response here..."></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- load window -->
+<div class="load-dialog" id="load-dialog">
+    <div class="head-dialog">
+        <h2> &nbsp;&nbsp;&nbsp;Saved SQL templates </h2>
+        <label class="btn-close" onclick="$('#load-dialog').toggle();">×</label>
+    </div>
+    <div class="content">
+        <div class="box">
+            <ul id="templateList" class="template-list">
+                <li class="template-list__item">
+<!--                    <span>example </span>-->
+<!--                    <img class="template-list__remove" src="../img/remove.png" alt="remove">-->
+                </li>
+                <li class="template-list__item">
+<!--                    <span>example_1-->
+<!--                    <img class="template-list__remove" src="../img/remove.png" alt="remove">-->
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--edit schemas-->
+<div class="schema-dialog" id="schemaSettings">
+    <div class="head-dialog">
+        <h2> &nbsp;&nbsp;&nbsp;Edit oracle schemas </h2>
+        <label class="btn-close" onclick="$('#schemaSettings').toggle();">×</label>
+    </div>
+    <div class="content">
+        <div class="box" style="height: 305px;">
+            <ul id="schemasList" class="template-list">
+                <li class="template-list__item">
+                    <span>example </span>
+                    <img class="template-list__remove" src="../img/remove.png" alt="remove">
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <label for="name">Schema name: </label>
+            <input id="name" type="text" placeholder="name for saving (no spaces allowed)" style="width: 95%; height: 8px">
+            <label for="login">Login: </label>
+            <input id="login" type="text" style="width: 95%; height: 8px">
+            <label for="password">Password: </label>
+            <input id="password" type="password" style="width: 95%; height: 8px">
+            <label for="connectString">Connecting string: </label>
+            <input id="connectString" type="text" placeholder="full connecting string" style="width: 95%; height: 8px">
+            <button id="saveScheme" type="button" class="saveScheme">Save</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+.simple {
+    display: block;
+    outline: 0;
+    padding: .7em 1em;
+    text-decoration: none;
+    color: #C9C9C9;
+    background-image: linear-gradient(#444, #333);
+    background-image: -ms-linear-gradient(#444, #333);
+}
+
+.simple:hover {
+    color: #f2bd00;
+}
+
+.submenu {
+    display: block;
+    outline: 0;
+    padding: .7em 1em;
+    text-decoration: none;
+    color: #C9C9C9;
+    font-weight: normal;
+    text-shadow: 1px 1px 3px #111;
+    background: #333;
+    box-shadow: inset 0 1px 0 0 rgba(250, 250, 250, 0.1);
+    background-image: linear-gradient(#444, #333);
+    background-image: -ms-linear-gradient(#444, #333);
+    border-bottom: 1px solid #222;
+}
+
+.submenu:hover {
+    color: #f2bd00;
+}
+
+.mini-menu {
+    display: inline-block;
+    max-width: 260px;
+    margin: 0px auto;
+    font: normal 14px Helvetica, Arial, sans-serif;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.mini-menu > ul {
+    margin-bottom: 0px;
+    border: 1px solid #222;
+    box-shadow: 0 0 10px #000;
+}
+
+.mini-menu > ul > li {
+    position: relative;
+}
+
+
+
+.mini-menu > ul > li > ul {
+    counter-reset: items;
+    height: 0;
+    overflow: hidden;
+    background: #eee;
+    color: #777;
+    font-size: .75em;
+    box-shadow: inset 0 0 50px #BBB;
+}
+
+.mini-menu > ul > li > ul > li {
+    counter-increment: items;
+    padding: .5em 1.3em;
+    border-bottom: 1px dotted #C9C9C9;
+}
+
+.mini-menu > ul > li > ul > li:hover {
+    background: #ccc;
+}
+
+.mini-menu > ul > li > ul > li > a {
+    color: #514B92;
+    text-decoration: none;
+}
+
+.mini-menu > ul > li > ul > li > a:hover {
+    color: red;
+    margin-left: 8px;
+}
+
+.chosen {
+    font-size:16px;
+    margin-left: 8px;
+}
+
+.mini-menu > ul > li > ul > li > a:after {
+    content: "»";
+    float: left;
+    margin-right: 4px;
+}
+
+.runAT {
+    content:url('/img/run.svg');
+    width: 15px;
+    height: 15px;
+    float: right;
+    margin: 0 0 0 0;
+}
+
+.runningAT {
+    content:url('/img/wait.gif');
+    width: 20px;
+    height: 20px;
+}

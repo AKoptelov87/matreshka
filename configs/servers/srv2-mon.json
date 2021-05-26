@@ -1,0 +1,23 @@
+{
+  "ssh": {
+    "host": "srv2-mon",
+    "user": "admin",
+    "password": "123456"
+  },
+  "logsPath": [
+"/u01/mr_octopus"
+  ],
+  "applications": {
+    "MR_OCTOPUS": {
+      "path": "/u01/mr_octopus",
+      "checkStatusCommand": "ps aux|grep mr-octopus|grep -v grep",
+      "command": {
+        "start": "service mr-octopus start",
+        "stop": "service mr-octopus stop",
+        "restart": "service mr-octopus restart",
+        "status": "service mr-octopus status"
+      }
+    }
+
+  }
+}

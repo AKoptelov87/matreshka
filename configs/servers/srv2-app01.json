@@ -1,0 +1,62 @@
+{
+  "ssh": {
+    "host": "srv2-app01",
+    "user": "admin",
+    "password": "123456"
+  },
+  "logsPath": [
+    "/u01/home/apache/logs",
+    "/u01/home/karaf/shared/logs",
+    "/u01/home/nginx_be/logs",
+    "/u01/home/oapi/zookeeper/log",
+    "/u01/home/ufm/log"
+  ],
+  "applications": {
+    "apache": {
+      "path": "/u01/home/apache/current",
+      "checkStatusCommand": "ps aux | grep 'http.*apache' | grep -v grep",
+      "command": {
+        "start": "./bin/apachectl start",
+        "stop": "./bin/apachectl stop",
+        "restart": "./bin/apachectl restart"
+      }
+    },
+    "KARAF": {
+      "path": "/u01/home/karaf/current/container",
+      "checkStatusCommand": "ps aux | grep java|grep karaf | grep org.apache.karaf.main.Main | grep -v grep",
+      "command": {
+        "start": "./bin/start",
+        "stop": "./bin/stop",
+        "bundle list": "./bin/client list | sort -rk 2"
+      }
+    },
+    "nginx_be": {
+      "path": "/u01/home/nginx_be/current",
+      "checkStatusCommand": "ps aux | grep nginx_be | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop",
+        "restart": "./nginxctl restart"
+      }
+    },
+    "nginx_fe": {
+      "path": "/u01/home/nginx_fe/current",
+      "checkStatusCommand": "ps aux | grep nginx_fe | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop",
+        "restart": "./nginxctl restart"
+      }
+    },
+    "ZOOKEEPER": {
+      "path": "/u01/home/oapi/zookeeper",
+      "checkStatusCommand": "ps aux | grep java|grep oapi/zookeeper | grep -v grep",
+      "command": {
+        "start": "./bin/zkServer.sh start",
+        "stop": "./bin/zkServer.sh stop",
+        "restart": "./bin/zkServer.sh restart",
+        "status": "./bin/zkServer.sh status"
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "ssh": {
+    "host": "srv3-f1-sfa",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+    "/u01/home/relstand/bin/logs"
+  ],
+  "applications": {
+    "tomcat_auto5": {
+      "path": "/u01/home/relstand/bin/tomcat_auto5/tomcat_auto5-app",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep tomcat_auto5 |  grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-f1-sfa:28080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+    },
+    "HAS_SFA": {
+      "path": "/u01/home/relstand/bin/SFA/has_server_sfa/has_server_sfa-app",
+      "checkStatusCommand": "netstat -nao | grep 8970 | grep LISTEN | grep -v grep",
+      "command": {
+        "start": "./has_serverctl start",
+        "stop": "./has_serverctl stop"
+      }
+    },
+    "NS_NTF": {
+      "path": "/u01/home/relstand/bin/SFA/NS_NTF",
+      "checkStatusCommand": "ps aux | grep ntf_srv | grep -v grep",
+      "command": {
+        "start": "./ntf_srv.sh start",
+        "stop": "./ntf_srv.sh stop"
+      }
+    },
+    "mbus_plsql_api_mbus_bfsfa": {
+      "path": "/u01/home/relstand/bin/mbus_plsql_api/mbus_bfsfa",
+      "checkStatusCommand": "ps aux | grep 'mbus_plsql_api/mbus_bfsfa/conf' | grep -v grep",
+      "command": {
+        "start": "./bin/mbus_plsql_api.sh start",
+        "stop": "./bin/mbus_plsql_api.sh stop"
+      }
+    },
+    "mbus_plsql_api_sfa_mbus_bfair": {
+      "path": "/u01/home/relstand/bin/mbus_plsql_api/sfa_mbus_bfair",
+      "checkStatusCommand": "ps aux | grep 'mbus_plsql_api/sfa_mbus_bfair/conf' | grep -v grep",
+      "command": {
+        "start": "./bin/mbus_plsql_api.sh start",
+        "stop": "./bin/mbus_plsql_api.sh stop"
+      }
+    },
+    "mbus_plsql_api_air_mbus_bfair": {
+      "path": "/u01/home/relstand/bin/mbus_plsql_api/air_mbus_bfair",
+      "checkStatusCommand": "ps aux | grep 'mbus_plsql_api/air_mbus_bfair/conf' | grep -v grep",
+      "command": {
+        "start": "./bin/mbus_plsql_api.sh start",
+        "stop": "./bin/mbus_plsql_api.sh stop"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "ssh": {
+    "host": "srv3-sso-acc",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+"/u01/home/relstand/logs/sso"
+  ],
+  "applications": {
+    "sso_acc_srv": {
+      "path": "/u01/home/relstand/bin/sso/acc_srv",
+      "checkStatusCommand": "/u01/home/relstand/bin/sso/acc_srv/bin/acc_srv ping|grep pong|grep -v grep",
+      "command": {
+        "start": "./bin/acc_srv start",
+        "stop": "./bin/acc_srv stop",
+        "restart": "./bin/acc_srv restart"
+      }
+    }
+
+  }
+}

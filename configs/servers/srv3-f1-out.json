@@ -1,0 +1,197 @@
+{
+  "ssh": {
+    "host": "srv3-f1-out",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+    "/u01/home/relstand/bin/r60base/logs"
+  ],
+  "applications": {
+    "ZOOKEEPER": {
+      "path": "/u01/home/relstand/bin/r60base/zookeeper",
+      "checkStatusCommand": "ps aux | grep java|grep zookeeper/bin | grep -v grep",
+      "command": {
+        "start": "./bin/zkServer.sh start",
+        "stop": "./bin/zkServer.sh stop",
+        "restart": "./bin/zkServer.sh restart",
+        "status": "./bin/zkServer.sh status"
+      }
+    },
+    "KARAF": {
+      "path": "/u01/home/relstand/bin/r60base/karaf/current/container",
+      "checkStatusCommand": "ps aux | grep java | grep karaf | grep org.apache.karaf.main.Main | grep -v grep",
+      "command": {
+        "start": "./bin/start",
+        "stop": "./bin/stop",
+        "bundle list": "./bin/client list | sort -rk 2"
+      }
+    },
+    "tomcat_pccm": {
+      "path": "/u01/home/relstand/bin/r60base/tomcat_pccm/",
+      "checkStatusCommand": "ps aux | grep java | grep tomcat_pccm | grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-f1-out:18080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+ },
+    "nginx_fe": {
+      "path": "/u01/home/relstand/bin/r60base/nginx_fe/current",
+      "checkStatusCommand": "ps aux | grep nginx_fe | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop"
+      }
+    },
+    "hex_nginx_emu": {
+      "path": "/u01/home/relstand/bin/r60base/hex_nginx_emu",
+      "checkStatusCommand": "ps aux | grep hex_nginx_emu/conf/nginx.conf | grep -v grep",
+      "command": {
+        "start": "./nginxctl start",
+        "stop": "./nginxctl stop"
+      }
+    },
+    "NS_NTF": {
+      "path": "/u01/home/relstand/bin/r60base/for_cnc/NS_NTF",
+      "checkStatusCommand": "ps aux | grep ntf_srv | grep -v 'ntf_srv --tty-log'| grep -v grep",
+      "command": {
+        "start": "./bin/ntf_srv.daemon.sh",
+        "stop": "./bin/ntf_srv.sh stop",
+        "stop": "./bin/ntf_srv.sh status"
+      }
+    },
+    "SMSC_EMU": {
+      "path": "/u01/home/relstand/bin/r60base/for_cnc/SMSC_EMU",
+      "checkStatusCommand": "ps aux | grep smsc_emu2 | grep -v grep",
+      "command": {
+        "start": "./start.sh",
+        "stop": "ps -ef | grep ' smsc_emu2' | awk '{print $2}' | xargs -r kill -9"
+      }
+    },
+    "CAMEL": {
+      "path": "/u01/home/relstand/bin/r60base/camel",
+      "checkStatusCommand": "ps aux | grep camel_server | grep -v grep",
+      "command": {
+        "start": "./start.sh",
+        "stop": "./stop.sh"
+      }
+    },
+    "CART_SRV": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/CART_SRV/current",
+      "checkStatusCommand": "ps aux | grep bin/ocs.cart_srv | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "OAPI_CART_BACKEND": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/OAPI_CART_BACKEND/current",
+      "checkStatusCommand": "ps aux | grep camel_server | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "NTF_SRV": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/NTF_SRV/current",
+      "checkStatusCommand": "ps aux | grep ntf_srv | grep -v 'ntf_srv --tty-log'| grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "DATA_PROVIDER": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/DATA_PROVIDER/current",
+      "checkStatusCommand": "ps aux | grep /bin/ocs.data_provider | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "RESOURCE_PROVIDER": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/RESOURCE_PROVIDER/current",
+      "checkStatusCommand": "ps aux | grep ./bin/ocs.resource_provider | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "OCS_CACHE": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/OCS_CACHE/current",
+      "checkStatusCommand": "ps aux | grep /bin/ocs.ocs_cache | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "BRT_SRV": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/BRT_SRV/current",
+      "checkStatusCommand": "ps aux | grep /bin/ocs.brt_srv | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "BRT_PROXY": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/BRT_PROXY/current",
+      "checkStatusCommand": "ps aux | grep ./bin/ocs.brt_proxy | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "OAPI_BRT_BACKEND": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/OAPI_BRT_BACKEND/current",
+      "checkStatusCommand": "ps aux | grep oapi_brt_backend | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "HRS_RT": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/HRS_RT/current",
+      "checkStatusCommand": "ps aux | grep rating_server | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "IDENTIFICATION": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/IDENTIFICATION/current",
+      "checkStatusCommand": "ps aux | grep /bin/ocs.identification | grep -v grep",
+      "command": {
+        "start": "./rund.sh",
+        "stop": "./stopd.sh",
+        "kill": "./kill.sh"
+      }
+    },
+    "CHARGING_DATA_MART_inserter": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/CHARGING_DATA_MART/inserter/current",
+      "checkStatusCommand": "ps -ef | grep datamart-inserter | grep -v grep",
+      "command": {
+         "start": "./datamart-inserter.daemon.sh",
+         "stop": "./datamart.sh inserter stop"
+      }
+    },
+    "CHARGING_DATA_MART_selector": {
+      "path": "/u01/home/relstand/bin/r60base/OCS/CHARGING_DATA_MART/selector/current",
+      "checkStatusCommand": "ps -ef | grep datamart-selector | grep -v grep",
+      "command": {
+         "start": "./datamart-inserter.daemon.sh",
+         "stop": "./datamart.sh selector stop"
+      }
+    }
+  }
+}

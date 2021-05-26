@@ -1,0 +1,52 @@
+{
+  "ssh": {
+    "host": "srv3-amain-m",
+    "user": "relstand",
+    "password": "rs123456"
+  },
+  "logsPath": [
+    "/u01/home/relstand/bin/r60base/tomcat_LG/logs",
+    "/u01/home/relstand/bin/r60base/mbus_plsql_api/log",
+    "/u01/home/relstand/bin/r60base/ufm_01/log"
+  ],
+  "applications": {
+    "tomcat_lg": {
+      "path": "/u01/home/relstand/bin/r60base/tomcat_LG",
+      "checkStatusCommand": "ps aux | grep 'java.*tomcat' | grep r60base/tomcat_LG |  grep -v grep",
+      "command": {
+        "start": "./bin/catalina.sh start",
+        "stop": "./bin/catalina.sh stop 5 -force",
+        "get_wars_status": "curl -m 5 --stderr /dev/null 'http://tomcat:tomcat@srv3-amain-m:8080/manager/text/list' | column -t -s: | sort -ik 2",
+        "webapps": "ls ./webapps/*.war"
+      }
+ },
+    "ZOOKEEPER": {
+      "path": "/u01/home/relstand/bin/r60base/zookeeper_oapi",
+      "checkStatusCommand": "ps aux | grep java | grep zoo.cfg | grep -v grep",
+      "command": {
+        "start": "./bin/zkServer.sh start",
+        "stop": "./bin/zkServer.sh stop",
+        "restart": "./bin/zkServer.sh restart",
+        "status": "./bin/zkServer.sh status"
+      }
+ },
+    "UFM_LG": {
+      "path": "/u01/home/relstand/bin/r60base/ufm_01",
+      "checkStatusCommand": "ps aux | grep java | grep com.peterservice.ufm.kernel.Kernel | grep -v grep",
+      "command": {
+        "start": "./bin/ufmctl.sh start",
+        "stop": "./bin/ufmctl.sh stop",
+        "restart": "./bin/ufmctl.sh restart",
+        "status": "./bin/ufmctl.sh status"
+      }
+ },
+    "MBUS_PLSQL_API": {
+      "path": "/u01/home/relstand/bin/r60base/mbus_plsql_api",
+      "checkStatusCommand": "ps aux | grep mbus_plsql_api/conf | grep -v grep",
+      "command": {
+        "start": "./bin/mbus_plsql_api.sh start",
+        "stop": "./bin/mbus_plsql_api.sh stop"
+      }
+    }
+  }
+}
